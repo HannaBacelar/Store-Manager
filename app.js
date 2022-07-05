@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 
 app.get('/products', productController.getAll);
 app.get('/products/:id', productController.getById);
+app.post('/products', productController.addProduct);
 
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
