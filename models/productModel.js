@@ -16,7 +16,7 @@ const getById = async (id) => {
   );
   return rows[0];
 };
-// req 2
+// req 3
 
 const addProduct = async (name) => {
   const [row] = await connection.execute(
@@ -29,9 +29,20 @@ const addProduct = async (name) => {
   };
   return result;
 };
+// req 10 
+// const updateProduct = async (id, name) => {
+//   const [result] = await connection.execute(
+//    `UPDATE products
+//       SET name= ?
+//       WHERE id = ?`,
+//     [name, id],
+//   );
+//   return result;
+// };
 
 module.exports = {
   getAll,
   getById,
   addProduct,
+  // updateProduct,
 };

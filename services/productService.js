@@ -16,16 +16,22 @@ const getById = async (id) => {
     
     return result;
 };
-    // req 2
+    // req 3
 const addProduct = async (name) => {
-  if (name) {
     const result = await productModel.addProduct(name);
     return result;
-  }
-};
+  };
+// req 4
 
+// req 10 put 
+const updateProduct = async (id, name) => {
+  const result = await productModel.updateProduct(id, name);
+  if (!result) return [];
+  return result;
+};
 module.exports = {
   getAll,
   getById,
   addProduct,
+  updateProduct,
 };
