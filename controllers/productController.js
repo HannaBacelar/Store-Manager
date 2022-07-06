@@ -30,15 +30,22 @@ const addProduct = rescue(async (req, res, next) => {
 });
 
 // req 10
-const updateProduct = (async (req, res) => {
+const updateProduct = (async (req, res, next) => {
+  const { error } = Joi.object({
+ name: Joi.string().required().min(5).not(),
+  }).validate(req.body);
+  if (error) return next(error);
+
   const { id } = req.params;
   const { name } = req.body;
       const result = await productService.updateProduct(id, name);
       if (result.error) {
-       return res.status(404).json({ message: result.error.message });
+        return next(result.error); 
      }
      return res.status(statusHttp.OK).json(result);
 });
+// req 12
+
 module.exports = {
   getAll,
   getById,
