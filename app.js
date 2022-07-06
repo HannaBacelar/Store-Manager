@@ -17,6 +17,7 @@ app.get('/products', productController.getAll);
 app.get('/products/:id', productController.getById);
 app.post('/products', productController.addProduct);
 app.put('/products/:id', productController.updateProduct);
+app.delete('/products/:id', productController.deleteProduct);
 
 app.use(productMiddlewares);
 //  app.get('/sales', salesController.getAllSales);

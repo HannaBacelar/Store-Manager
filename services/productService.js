@@ -29,9 +29,17 @@ const updateProduct = async (id, name) => {
   const result = await productModel.updateProduct(id, name);
   return result;
 };
+// req 12
+const deleteProduct = async (id) => {
+    const idVerify = await getById(id);
+  if (idVerify.error) return idVerify;
+  const result = await productModel.deleteProduct(id);
+  return result;
+};
 module.exports = {
   getAll,
   getById,
   addProduct,
   updateProduct,
+  deleteProduct,
 };
