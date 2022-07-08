@@ -27,7 +27,7 @@ describe('testes do arquivo Controller', () => {
   const request = {};
 
   before(() => {
-    response.status = sinon.stub().returns(res);
+    response.status = sinon.stub().returns(response);
     request.json = sinon.stub();
   });
 
