@@ -23,12 +23,12 @@ const product = [
 ];
 
 describe('testes do arquivo Controller', () => {
-  const response = {};
+  const response= {};
   const request = {};
 
   before(() => {
     response.status = sinon.stub().returns(response);
-    request.json = sinon.stub();
+    response.json = sinon.stub();
   });
 
   after(() => {
