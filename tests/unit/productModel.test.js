@@ -14,7 +14,6 @@ const products = [{
   },
 ];
 
-//https://www.chaijs.com/api/bdd/
 const product = [
   {
     id: 1,
@@ -22,6 +21,7 @@ const product = [
   },
 ];
 
+//https://www.chaijs.com/api/bdd/
 describe('Testa aqruivo models', () => {
     after(() => {
       sinon.restore();
@@ -39,5 +39,15 @@ describe('Testa aqruivo models', () => {
       const result = await productModel.getAll();
       expect(result).to.have.keys['id', 'name'];
     });
+    // describe('testa função getById', () => {
+    //   sinon.stub(connection, 'execute').resolves(product);
+    //   it('verifica se é possivel listar um array de obj com id e name de produtos'), async () => {
+    //     const result = await productModel.getById(1);
+    //     products.forEach((produto) =>
+    //       expect(produto).to.be.an('object'));
+    //     expect(result).to.have.keys[('id', 'name')];     
+    //   }
+
+    // });
   });
   });
