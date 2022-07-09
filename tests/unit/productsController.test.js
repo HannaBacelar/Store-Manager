@@ -43,5 +43,9 @@ describe('testes do arquivo Controller', () => {
       await productController.getAll(request, response);
       expect(response.status.calledWith(200)).to.be.equal(true);
     });
+    it('verifica  se o array de obj retornam id e name', async () => {
+      await productController.getAll(request, response);
+      expect(response.json).to.have.keys['id', 'name'];
+    });
   })
 });
