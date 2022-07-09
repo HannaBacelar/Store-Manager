@@ -30,7 +30,7 @@ describe('testes do arquivo Controller', () => {
   before(() => {
     response.status = sinon.stub().returns(response);
     response.json = sinon.stub();
-    response.send = sinon.stub().returns();
+    // response.send = sinon.stub().returns();
   });
 
   after(() => {
@@ -66,15 +66,5 @@ describe('testes do arquivo Controller', () => {
       expect(response.json).to.have.keys[('id', 'name')];
     });
     });
-
-     describe('Testa função getById', () => {
-       before(() => {
-         sinon.stub(productController, 'deleteProduct').resolves(products);
-    }); 
-      });
-      it('verifica se o send é chamado', async () => {
-        await productController.deleteProduct(request, response);
-        expect(response.send.calledWith(204)).to.be.equal(true);
-      });
   });
 });
