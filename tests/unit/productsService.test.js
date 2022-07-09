@@ -39,4 +39,15 @@ describe('testa aqruivo Services', () => {
       products.forEach((product) => expect(product).to.be.an('object'));
     });
   });
+   describe('testa função getById', () => {
+    it('verifica se é possível retornar um array de objetos com nome e id', async () => {
+      sinon.stub(productModel, 'getById').resolves(products);
+
+      const result = await productService.getById();
+
+      expect(result).to.have.keys['id','name'];
+
+      products.forEach((product) => expect(product).to.be.an('object'));
+    });
+  });
   });
