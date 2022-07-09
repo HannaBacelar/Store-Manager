@@ -47,5 +47,18 @@ describe('testes do arquivo Controller', () => {
       await productController.getAll(request, response);
       expect(response.json).to.have.keys['id', 'name'];
     });
-  })
+    it('verifica se retorna um json com um array de objetos', async () => {
+      await productController.getAll(request, response);
+      products.forEach((produto) => expect(produto).to.be.an('object'));
+    });
+    describe('Testa função getById', () => {
+      before(() => {
+        request.params = { id: 1 }
+      });
+      it('verifica o status de sucesso 200', async () => {
+        await productController.getById(request, response);
+        expect(response.status.calledWith(200)).to.be.equal(true);
+      })
+    });
+  });
 });
