@@ -4,6 +4,7 @@ const { expect } = require('chai');
 const productController = require('../../controllers/productController');
 const productService = require('../../services/productService');
 const connection = require('../../helpers/connection');
+const { deleteProduct } = require('../../models/productModel');
 
 const products = [{
     id: 1,
@@ -29,6 +30,7 @@ describe('testes do arquivo Controller', () => {
   before(() => {
     response.status = sinon.stub().returns(response);
     response.json = sinon.stub();
+    response.send = sinon.stub().returns();
   });
 
   after(() => {
@@ -45,7 +47,7 @@ describe('testes do arquivo Controller', () => {
     });
     it('verifica  se o array de obj retornam id e name', async () => {
       await productController.getAll(request, response);
-      expect(response.json).to.have.keys['id', 'name'];
+      expect(response.json).to.have.keys[('id', 'name')];
     });
     it('verifica se retorna um json com um array de objetos', async () => {
       await productController.getAll(request, response);
@@ -58,7 +60,21 @@ describe('testes do arquivo Controller', () => {
       it('verifica o status de sucesso 200', async () => {
         await productController.getById(request, response);
         expect(response.status.calledWith(200)).to.be.equal(true);
-      })
+      });
+      it('verifica  se o array de obj retornam id e name JSON', async () => {
+      await productController.getById(request, response);
+      expect(response.json).to.have.keys[('id', 'name')];
     });
+    });
+
+     describe('Testa função getById', () => {
+       before(() => {
+         sinon.stub(productController, 'deleteProduct').resolves(products);
+    }); 
+      });
+      it('verifica se o send é chamado', async () => {
+        await productController.deleteProduct(request, response);
+        expect(response.send.calledWith(204)).to.be.equal(true);
+      });
   });
 });
