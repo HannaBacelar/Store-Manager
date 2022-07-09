@@ -49,5 +49,15 @@ describe('testa aqruivo Services', () => {
 
       products.forEach((product) => expect(product).to.be.an('object'));
     });
+     
+   });
+    describe('testando função addProduct', () => {
+    it('verifica se retorna id quando todas dados estiverem corretos', async () => {
+      sinon.stub(productModel, 'addProduct').resolves(1);
+
+      const result = await productService.addProduct({ name: 'AgumProduto' });
+
+      expect(result).to.have.equal(1);
+    });
   });
   });

@@ -57,14 +57,14 @@ describe('testes do arquivo Controller', () => {
       before(() => {
         request.params = { id: 1 }
       });
-      it('verifica o status de sucesso 200', async () => {
-        await productController.getById(request, response);
-        expect(response.status.calledWith(200)).to.be.equal(true);
-      });
       it('verifica  se o array de obj retornam id e name JSON', async () => {
       await productController.getById(request, response);
       expect(response.json).to.have.keys[('id', 'name')];
     });
+      it('verifica o status de sucesso 200', async () => {
+        await productController.getById(request, response);
+        expect(response.status.calledWith(200)).to.be.equal(true);
+      });
     });
   });
 });

@@ -48,5 +48,5 @@ describe('Testa aqruivo models', () => {
           expect(produto).to.be.an('object'));
         expect(result).to.have.keys[('id', 'name')];
       });
-});
+    });
 });
