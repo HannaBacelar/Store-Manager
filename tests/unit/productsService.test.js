@@ -36,18 +36,18 @@ describe('testa aqruivo Services', () => {
 
       expect(result).to.be.an('array');
 
-      products.forEach((product) => expect(product).to.be.an('object'));
+      products.forEach((produto) => expect(produto).to.be.an('object'));
     });
   });
    describe('testa função getById', () => {
     it('verifica se é possível retornar um array de objetos com nome e id', async () => {
-      sinon.stub(productModel, 'getById').resolves(products);
+      sinon.stub(productModel, 'getById').resolves(product);
 
       const result = await productService.getById();
 
+      products.forEach((produto) => expect(produto).to.be.an('object'));
       expect(result).to.have.keys['id','name'];
 
-      products.forEach((product) => expect(product).to.be.an('object'));
     });
      
    });
@@ -55,9 +55,10 @@ describe('testa aqruivo Services', () => {
     it('verifica se retorna id quando todas dados estiverem corretos', async () => {
       sinon.stub(productModel, 'addProduct').resolves(1);
 
-      const result = await productService.addProduct({ name: 'AgumProduto' });
+      const result = await productService.addProduct({ name: 'ProdutoX' });
 
       expect(result).to.have.equal(1);
     });
   });
+  
   });

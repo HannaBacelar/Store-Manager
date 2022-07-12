@@ -39,6 +39,7 @@ const updateProduct = async (id, name) => {
   );
   return getById(id);
 };
+//
 const deleteProduct = async (id) => {
  const result = await connection.execute(
    `DELETE FROM products
